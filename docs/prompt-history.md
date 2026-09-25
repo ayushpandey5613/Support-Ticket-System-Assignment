@@ -56,7 +56,16 @@ For each meaningful AI session:
 ### Phase 2 complete — 2026-09-25
 
 - Tests: `mvn test` in `backend/`
+- Cross-check: `docs/reviews/phase-2-cross-check.md`, `spec/implementation-status.md`
 - Next: **Phase 3** — `POST /tickets/{id}/status` + `TicketStatusTransitionIntegrationTest`
+
+---
+
+## 2026-09-25 — Phase 2 spec cross-check (pre-AI review)
+
+**User prompt:** Cross-check everything for AI review and spec-driven compliance.
+
+**Outcome:** Traceability doc, phase-2 review log, pom fix, extra integration tests, architecture status column.
 
 ---
 

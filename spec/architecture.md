@@ -58,13 +58,15 @@ Default ports: API `8080`, frontend `3000`.
 
 ## Phase roadmap
 
-| Phase | Deliverable |
-|-------|-------------|
-| 1 | Hygiene + spec (this document set) |
-| 2 | Backend: ticket CRUD + validation + H2 |
-| 3 | State machine + integration tests |
-| 4 | Comments, search, filter APIs |
-| 5 | Frontend list + create |
-| 6 | Frontend detail, comments, search, filter |
-| 7 | Status UI + error polish |
-| 8 | PostgreSQL profile + persistence verification |
+| Phase | Deliverable | Status |
+|-------|-------------|--------|
+| 1 | Hygiene + spec (this document set) | Complete |
+| 2 | Backend: ticket CRUD + validation + H2 | Complete |
+| 3 | State machine + integration tests | Planned |
+| 4 | Comments, search, filter APIs | Planned |
+| 5 | Frontend list + create | Planned |
+| 6 | Frontend detail, comments, search, filter | Planned |
+| 7 | Status UI + error polish | Planned |
+| 8 | PostgreSQL profile + persistence verification | Planned |
+
+Detailed FR/API mapping: `spec/implementation-status.md`.

@@ -11,4 +11,8 @@ Document where AI output was **reviewed and corrected** (not accepted blindly).
 | 2026-09-25 | Phase 1 pre-push review | `api-standards.md` transition error JSON omitted `timestamp`/`status` wrapper | All errors use one envelope; 409 includes `from`/`to` (`rules/api-standards.md`) |
 | 2026-09-25 | Phase 1 pre-push review | `ai-review-log.md` used “placeholder” rows | Replaced with real spec decisions rejected during design (this table) |
 
+| 2026-09-25 | Phase 2 review | Suggested implementing `q`/`status` on list in same PR as CRUD | Deferred to Phase 4 per `spec/api-contract.md` implementation phases table |
+| 2026-09-25 | Phase 2 review | Optional DTO for PATCH without handling `assignee: null` | Used `JsonNode` PATCH in service to honour contract null-clear without extra dependency |
+| 2026-09-25 | Phase 2 review | `pom.xml` typo `<n>` instead of `<name>` | Fixed during cross-check |
+
 Add a row after each `commands/review-code.md` session during implementation phases.

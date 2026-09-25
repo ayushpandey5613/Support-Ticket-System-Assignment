@@ -118,6 +118,27 @@ class TicketControllerIntegrationTest {
     }
 
     @Test
+    void list_returnsContractPaginationShape() throws Exception {
+        createSampleTicket();
+        mockMvc.perform(get("/api/v1/tickets").param("page", "0").param("size", "20"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").isArray())
+                .andExpect(jsonPath("$.page", is(0)))
+                .andExpect(jsonPath("$.size", is(20)))
+                .andExpect(jsonPath("$.totalElements", org.hamcrest.Matchers.greaterThanOrEqualTo(1)));
+    }
+
+    @Test
+    void patch_emptyBody_returns400() throws Exception {
+        String id = createSampleTicket();
+        mockMvc.perform(patch("/api/v1/tickets/{id}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code", is("VALIDATION_ERROR")));
+    }
+
+    @Test
     void getUnknownId_returns404() throws Exception {
         mockMvc.perform(get("/api/v1/tickets/{id}", UUID.randomUUID()))
                 .andExpect(status().isNotFound())

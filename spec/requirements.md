@@ -64,3 +64,7 @@ Web application for creating and managing support tickets with comments, search,
 | FR-09 | `architecture.md`, `data-model.md`, `test-strategy.md` (IT-08) |
 | FR-10–11 | `api-contract.md`, `rules/api-standards.md`, `ui-flow.md`, `test-strategy.md` |
 | NFR-05–07 | `development-workflow.md`, `docs/prompt-history.md`, `docs/ai-review-log.md` |
+
+## Phased implementation
+
+Delivery is incremental per `spec/architecture.md`. **Built vs planned** is tracked in `spec/implementation-status.md` (not all FRs are complete until later phases).

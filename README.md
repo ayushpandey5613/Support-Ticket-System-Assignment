@@ -8,8 +8,10 @@ SE/SSE assignment — **spec-driven** monorepo (Java 21 + Spring Boot + Next.js)
 |----------|---------|
 | [spec/requirements.md](spec/requirements.md) | Functional requirements & acceptance criteria |
 | [spec/development-workflow.md](spec/development-workflow.md) | Requirement → Spec → Plan → Build → Test → Review |
+| [spec/implementation-status.md](spec/implementation-status.md) | **What is built per phase (reviewers start here)** |
 | [spec/api-contract.md](spec/api-contract.md) | REST API v1 |
 | [spec/state-machine.md](spec/state-machine.md) | Ticket status transitions (backend-enforced) |
+| [docs/reviews/phase-2-cross-check.md](docs/reviews/phase-2-cross-check.md) | Latest spec-vs-code review |
 
 ## Repo layout
 

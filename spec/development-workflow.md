@@ -34,3 +34,4 @@ Before closing a phase:
 - [ ] Tests added per `test-strategy.md` for that slice.
 - [ ] `commands/review-code.md` run; findings addressed or logged.
 - [ ] Commit message references phase (e.g. `chore: phase 1 spec scaffolding`).
+- [ ] Update `spec/implementation-status.md` when FR/API slices ship.
