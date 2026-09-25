@@ -1,5 +1,7 @@
 spring:
   datasource:
+    # File DB (FR-09). Run only ONE backend against this file, or stop other JVMs first.
+    # AUTO_SERVER allows H2 console + app; if startup fails with 90020, kill other Java processes.
     url: jdbc:h2:file:./data/ticketdb;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE
     driver-class-name: org.h2.Driver
     username: sa
@@ -9,6 +11,7 @@ spring:
       enabled: true
       path: /h2-console
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
     show-sql: false

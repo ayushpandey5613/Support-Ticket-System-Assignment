@@ -1,6 +1,8 @@
-# Phase 8: activate with spring.profiles.active=postgres
-# Credentials via environment only (NFR-04) — never commit real values.
+# Phase 8 only — do NOT add to spring.profiles.active unless DB_URL is set.
 spring:
+  config:
+    activate:
+      on-profile: postgres
   datasource:
     url: ${DB_URL}
     username: ${DB_USER}
