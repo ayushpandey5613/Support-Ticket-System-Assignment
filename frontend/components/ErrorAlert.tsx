@@ -16,6 +16,9 @@ export function ErrorAlert({ error, title = "Something went wrong" }: ErrorAlert
   return (
     <div className="alert alert-error" role="alert">
       <strong>{title}</strong>
+      {apiError?.code && apiError.code !== "VALIDATION_ERROR" && (
+        <p className="error-code">{apiError.code}</p>
+      )}
       <p>{message}</p>
       {apiError && apiError.fieldErrors.length > 0 && (
         <ul>

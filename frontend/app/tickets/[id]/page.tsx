@@ -1,9 +1,15 @@
 "use client";
 
 import { ErrorAlert } from "@/components/ErrorAlert";
-import { addComment, getTicket, patchTicket } from "@/lib/api";
+import {
+  addComment,
+  getTicket,
+  patchTicket,
+  transitionTicketStatus,
+} from "@/lib/api";
 import { formatDate } from "@/lib/format";
-import { ApiError, Priority, TicketDetail } from "@/lib/types";
+import { getStatusActions } from "@/lib/statusActions";
+import { ApiError, Priority, TicketDetail, TicketStatus } from "@/lib/types";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { FormEvent, useCallback, useEffect, useState } from "react";
@@ -30,6 +36,9 @@ export default function TicketDetailPage() {
   const [commentBody, setCommentBody] = useState("");
   const [commentSubmitting, setCommentSubmitting] = useState(false);
   const [commentError, setCommentError] = useState<ApiError | Error | null>(null);
+
+  const [statusBusy, setStatusBusy] = useState<TicketStatus | null>(null);
+  const [statusError, setStatusError] = useState<ApiError | Error | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -100,9 +109,34 @@ export default function TicketDetailPage() {
       setCommentBody("");
       await load();
     } catch (err) {
-      setCommentError(err instanceof Error ? err : new Error("Comment failed"));
+      if (err instanceof ApiError) {
+        setCommentError(err);
+      } else {
+        setCommentError(err instanceof Error ? err : new Error("Comment failed"));
+      }
     } finally {
       setCommentSubmitting(false);
+    }
+  }
+
+  async function onStatusAction(target: TicketStatus) {
+    setStatusBusy(target);
+    setStatusError(null);
+    try {
+      const updated = await transitionTicketStatus(id, target);
+      setTicket((prev) =>
+        prev ? { ...prev, ...updated, comments: prev.comments } : prev
+      );
+    } catch (err) {
+      if (err instanceof ApiError) {
+        setStatusError(err);
+      } else {
+        setStatusError(
+          err instanceof Error ? err : new Error("Status change failed")
+        );
+      }
+    } finally {
+      setStatusBusy(null);
     }
   }
 
@@ -119,6 +153,8 @@ export default function TicketDetailPage() {
     );
   }
 
+  const statusActions = getStatusActions(ticket.status);
+
   return (
     <div>
       <p><Link href="/">← Back to list</Link></p>
@@ -126,6 +162,33 @@ export default function TicketDetailPage() {
         Status: <span className="badge">{ticket.status}</span>
         · Updated {formatDate(ticket.updatedAt)}
       </div>
+
+      {statusActions.length > 0 && (
+        <section className="status-actions card" aria-label="Status actions">
+          <h3 className="status-actions-title">Change status</h3>
+          <ErrorAlert
+            error={statusError}
+            title="Could not update status"
+          />
+          <div className="status-actions-buttons">
+            {statusActions.map((action) => (
+              <button
+                key={action.targetStatus}
+                type="button"
+                className={
+                  action.secondary ? "btn btn-secondary" : "btn"
+                }
+                disabled={statusBusy !== null}
+                onClick={() => onStatusAction(action.targetStatus)}
+              >
+                {statusBusy === action.targetStatus
+                  ? "Updating…"
+                  : action.label}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
 
       <h2>Edit ticket</h2>
       <ErrorAlert error={saveError} title="Could not save changes" />

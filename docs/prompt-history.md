@@ -94,6 +94,18 @@ For each meaningful AI session:
 
 ---
 
+## 2026-09-25 — Phase 7: Status actions UI
+
+**Prompt:** Phase 7 start.
+
+**Outcome:** Detail page status buttons per `ui-flow.md`, `POST .../status`, 409 shown via `ErrorAlert` + error code.
+
+### Phase 7 complete — 2026-09-25
+
+- Next: **Phase 8** — PostgreSQL profile + persistence test
+
+---
+
 ## 2026-09-25 — Holistic assessment cross-check (pre-AI review)
 
 **User prompt:** Full cross-check for AI review; must match assignment spec-driven requirements.

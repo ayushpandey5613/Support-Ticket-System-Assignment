@@ -68,11 +68,11 @@ Full product (UI + backend). **Backend/API progress** is tracked in `spec/implem
 - [x] Comments added
 - [x] Search works (list UI)
 - [x] Status filter works (list UI)
-- [ ] Valid status transitions work
-- [ ] Invalid transitions rejected by backend
+- [x] Valid status transitions work (detail status actions)
+- [x] Invalid transitions rejected by backend (409 + `INVALID_STATUS_TRANSITION` in UI)
 - [ ] Data survives application restart
 - [ ] Backend validation works
-- [ ] UI shows meaningful errors
+- [x] UI shows meaningful errors (API message + code on detail)
 - [ ] State-machine integration tests pass
 - [ ] No secrets committed
 

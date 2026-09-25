@@ -22,6 +22,31 @@ SE/SSE assignment — **spec-driven** monorepo (Java 21 + Spring Boot + Next.js)
 - `rules/`, `commands/`, `skills/` — reusable AI / team instructions
 - `docs/prompt-history.md` — prompt index; `.specstory/history/` — raw chat exports
 
+## Daily dev workflow (port 8080 / 3000 busy?)
+
+Har baar naya terminal khulne se **purana backend/frontend chalta reh jata hai** — isliye port badalta hai ya “already in use” aata hai.
+
+**Pehle sab band karo (repo root):**
+
+```bash
+chmod +x scripts/stop-dev.sh   # once
+./scripts/stop-dev.sh
+```
+
+Phir **sirf ek** backend aur **sirf ek** frontend:
+
+```bash
+# Terminal 1
+cd backend && mvn spring-boot:run
+
+# Terminal 2
+cd frontend && npm run dev
+```
+
+- Frontend ab hamesha **3000** pe try karega (`next dev -p 3000`). Agar busy ho to `stop-dev.sh` chalao, dubara `npm run dev`.
+- Backend hamesha **8080** — doosra `mvn spring-boot:run` mat chalao (Cursor background task + tumhara terminal = conflict).
+- Browser: `http://localhost:3000` (3001/3002 mat kholo jab tak zarurat na ho).
+
 ## Local run — backend (Phase 2)
 
 ```bash
@@ -56,11 +81,7 @@ Open `http://localhost:3000`
 Usually **H2 file locked** by another Java process, or **`postgres` profile** without `DB_URL`.
 
 ```bash
-# 1) Stop all running backends
-pkill -f TicketSystemApplication || true
-pkill -f "spring-boot:run" || true
-
-# 2) From repo backend folder only
+./scripts/stop-dev.sh
 cd backend
 mvn spring-boot:run
 ```
@@ -89,4 +110,5 @@ rm -f backend/data/ticketdb.lock.db
 - **Phase 4:** comments, search & status filter APIs (complete)
 - **Phase 5:** Next.js list + create (complete)
 - **Phase 6:** detail, edit, comments, search/filter UI (complete)
-- **Phase 7+:** status actions UI, Postgres
+- **Phase 7:** status actions UI + 409 errors (complete)
+- **Phase 8:** Postgres

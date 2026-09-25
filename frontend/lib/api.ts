@@ -129,3 +129,13 @@ export async function addComment(
     body: JSON.stringify(input),
   });
 }
+
+export async function transitionTicketStatus(
+  id: string,
+  status: TicketStatus
+): Promise<Ticket> {
+  return apiFetch<Ticket>(`/tickets/${id}/status`, {
+    method: "POST",
+    body: JSON.stringify({ status }),
+  });
+}

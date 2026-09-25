@@ -197,6 +197,28 @@ th {
   margin-bottom: 1rem;
 }
 
+.status-actions {
+  margin-bottom: 1.25rem;
+}
+
+.status-actions-title {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.status-actions-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.alert-error .error-code {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
 .comment-list {
   list-style: none;
   margin: 0 0 1rem;
