@@ -34,10 +34,57 @@ H2 file DB: `backend/data/` (dev profile, survives restarts)
 
 Tests: `cd backend && mvn test`
 
+## Local run — frontend (Phase 5)
+
+```bash
+cd backend && mvn spring-boot:run
+```
+
+In another terminal:
+
+```bash
+cd frontend
+cp .env.example .env.local   # optional; default API URL is localhost:8080
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`
+
+### Backend won't start (Hibernate / JDBC / Dialect error)
+
+Usually **H2 file locked** by another Java process, or **`postgres` profile** without `DB_URL`.
+
+```bash
+# 1) Stop all running backends
+pkill -f TicketSystemApplication || true
+pkill -f "spring-boot:run" || true
+
+# 2) From repo backend folder only
+cd backend
+mvn spring-boot:run
+```
+
+Wait for: `Started TicketSystemApplication`.  
+Do **not** set `SPRING_PROFILES_ACTIVE=postgres` until Phase 8 env vars exist.
+
+If lock persists, stop apps and remove stale lock (data file stays):
+
+```bash
+rm -f backend/data/ticketdb.lock.db
+```
+
+### UI stuck on "Creating…"
+
+1. Backend must be **started** (see above).
+2. Test: `curl -X POST http://localhost:8080/api/v1/tickets -H 'Content-Type: application/json' -d '{"title":"T","description":"D"}'` — under ~1s.
+3. Frontend: `NEXT_PUBLIC_API_URL=http://localhost:8080/api/v1` in `frontend/.env.local`.
+
 ## Status
 
 - **Phase 1:** specifications and steering (complete)
 - **Phase 2:** backend ticket CRUD + validation + H2 (complete)
 - **Phase 3:** status state machine + integration tests (complete)
 - **Phase 4:** comments, search & status filter APIs (complete)
-- **Phase 5+:** frontend, Postgres
+- **Phase 5:** Next.js list + create (complete)
+- **Phase 6+:** detail, search/filter UI, Postgres

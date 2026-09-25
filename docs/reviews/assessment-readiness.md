@@ -46,15 +46,15 @@ All present under `spec/`: `requirements.md`, `architecture.md`, `data-model.md`
 | Java 21 + Spring Boot REST | `backend/` — implemented |
 | H2 dev / test | `application-dev.yml`, `application-test.yml` |
 | PostgreSQL prod-like | **Phase 8** — `application-postgres.yml` stub only |
-| React/Next.js | **Phase 5+** — `frontend/` placeholder |
+| React/Next.js | **Phase 5** — list + create in `frontend/`; detail/search UI Phase 6 |
 | Cursor / Copilot steering | `rules/`, `.cursor/rules/spec-driven.mdc` |
 
 ## Features vs acceptance criteria
 
 | Criterion | Backend (API/tests) | UI (Phase 5–7) |
 |-----------|---------------------|----------------|
-| Create ticket | Done — `POST /tickets` | Pending |
-| List tickets | Done — paginated | Pending |
+| Create ticket | Done — `POST /tickets` | Done — `/tickets/new` |
+| List tickets | Done — paginated | Done — `/` |
 | View details | Done — includes comments | Pending |
 | Update fields / assignee | Done — `PATCH` | Pending |
 | Comments | Done — `POST .../comments` | Pending |

@@ -61,8 +61,8 @@ Full product (UI + backend). **Backend/API progress** is tracked in `spec/implem
 
 ### End-to-end (requires frontend Phases 5–7)
 
-- [ ] Ticket created from UI
-- [ ] Tickets listed
+- [x] Ticket created from UI (Phase 5 — `/tickets/new`)
+- [x] Tickets listed (Phase 5 — `/`)
 - [ ] Ticket details viewed
 - [ ] Ticket fields updated; assignee changed
 - [ ] Comments added

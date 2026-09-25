@@ -90,6 +90,19 @@ For each meaningful AI session:
 
 ---
 
+## 2026-09-25 — Phase 5: Frontend list + create
+
+**Prompt:** Phase 5 start.
+
+**Outcome:** Next.js 15 App Router in `frontend/`, ticket list with pagination, create form, `lib/api.ts` + `ApiError` / `ErrorAlert` per `spec/ui-flow.md` (Phase 5 scope: no detail/search UI yet).
+
+### Phase 5 complete — 2026-09-25
+
+- Run: backend `:8080` + `cd frontend && npm run dev`
+- Next: **Phase 6** — ticket detail, edit, comments, search/filter on list
+
+---
+
 ## 2026-09-25 — Phase 4: Comments, search, filter
 
 **Prompt:** Phase 4 start.
