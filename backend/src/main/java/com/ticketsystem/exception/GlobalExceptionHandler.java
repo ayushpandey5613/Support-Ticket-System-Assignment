@@ -37,6 +37,20 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.NOT_FOUND, "NOT_FOUND", ex.getMessage(), request.getRequestURI(), null);
     }
 
+    @ExceptionHandler(InvalidStatusTransitionException.class)
+    public ResponseEntity<ApiErrorResponse> handleInvalidTransition(
+            InvalidStatusTransitionException ex, HttpServletRequest request) {
+        ApiErrorResponse body = new ApiErrorResponse();
+        body.setStatus(HttpStatus.CONFLICT.value());
+        body.setError(HttpStatus.CONFLICT.getReasonPhrase());
+        body.setCode("INVALID_STATUS_TRANSITION");
+        body.setMessage(ex.getMessage());
+        body.setPath(request.getRequestURI());
+        body.setFrom(ex.getFrom().name());
+        body.setTo(ex.getTo().name());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(body);
+    }
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiErrorResponse> handleUnreadable(HttpMessageNotReadableException ex, HttpServletRequest request) {
         return build(HttpStatus.BAD_REQUEST, "VALIDATION_ERROR", "Malformed JSON request", request.getRequestURI(), null);

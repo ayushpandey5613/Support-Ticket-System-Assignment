@@ -16,6 +16,7 @@ Review specifications for completeness and internal consistency.
 - `spec/state-machine.md`
 - `spec/ui-flow.md`
 - `spec/test-strategy.md`
+- `spec/implementation-status.md`
 
 **Instructions**
 

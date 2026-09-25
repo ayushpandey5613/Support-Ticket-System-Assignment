@@ -14,5 +14,6 @@ Document where AI output was **reviewed and corrected** (not accepted blindly).
 | 2026-09-25 | Phase 2 review | Suggested implementing `q`/`status` on list in same PR as CRUD | Deferred to Phase 4 per `spec/api-contract.md` implementation phases table |
 | 2026-09-25 | Phase 2 review | Optional DTO for PATCH without handling `assignee: null` | Used `JsonNode` PATCH in service to honour contract null-clear without extra dependency |
 | 2026-09-25 | Phase 2 review | `pom.xml` typo `<n>` instead of `<name>` | Fixed during cross-check |
+| 2026-09-25 | Phase 3 | Inline transition `if` chain in controller | Dedicated `TicketStatusTransition` `@Component` + service call (`rules/java-springboot.md`) |
 
 Add a row after each `commands/review-code.md` session during implementation phases.

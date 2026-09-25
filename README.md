@@ -37,4 +37,5 @@ Tests: `cd backend && mvn test`
 
 - **Phase 1:** specifications and steering (complete)
 - **Phase 2:** backend ticket CRUD + validation + H2 (complete)
-- **Phase 3+:** state machine, comments/search, frontend
+- **Phase 3:** status state machine + integration tests (complete)
+- **Phase 4+:** comments/search, frontend, Postgres

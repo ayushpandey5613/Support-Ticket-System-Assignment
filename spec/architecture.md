@@ -62,7 +62,7 @@ Default ports: API `8080`, frontend `3000`.
 |-------|-------------|--------|
 | 1 | Hygiene + spec (this document set) | Complete |
 | 2 | Backend: ticket CRUD + validation + H2 | Complete |
-| 3 | State machine + integration tests | Planned |
+| 3 | State machine + integration tests | Complete |
 | 4 | Comments, search, filter APIs | Planned |
 | 5 | Frontend list + create | Planned |
 | 6 | Frontend detail, comments, search, filter | Planned |

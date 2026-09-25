@@ -69,6 +69,19 @@ For each meaningful AI session:
 
 ---
 
+## 2026-09-25 — Phase 3: Status state machine
+
+**Prompt:** Ok ab next phase start kro (Phase 3).
+
+**Outcome:** `POST /api/v1/tickets/{id}/status`, `TicketStatusTransition` component, `409 INVALID_STATUS_TRANSITION` with `from`/`to`, unit + `TicketStatusTransitionIntegrationTest`.
+
+### Phase 3 complete — 2026-09-25
+
+- Tests: `mvn test` (includes state-machine suite)
+- Next: **Phase 4** — comments, `q`, `status` on list API
+
+---
+
 ## 2026-09-25 — Pre-push spec review (AI-assisted)
 
 **User prompt (summary):** Review Phase 1 thoroughly so AI assignment review does not fail later.

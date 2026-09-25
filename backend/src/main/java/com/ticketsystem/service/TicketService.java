@@ -27,9 +27,11 @@ public class TicketService {
     private static final int DEFAULT_PAGE_SIZE = 20;
 
     private final TicketRepository ticketRepository;
+    private final TicketStatusTransition statusTransition;
 
-    public TicketService(TicketRepository ticketRepository) {
+    public TicketService(TicketRepository ticketRepository, TicketStatusTransition statusTransition) {
         this.ticketRepository = ticketRepository;
+        this.statusTransition = statusTransition;
     }
 
     @Transactional
@@ -78,6 +80,15 @@ public class TicketService {
                 default -> throw new InvalidPatchException("Unknown field: " + field);
             }
         }
+        return ticketRepository.save(ticket);
+    }
+
+    @Transactional
+    public Ticket transitionStatus(UUID id, TicketStatus targetStatus) {
+        Ticket ticket = getById(id);
+        TicketStatus current = ticket.getStatus();
+        statusTransition.assertTransition(current, targetStatus);
+        ticket.setStatus(targetStatus);
         return ticketRepository.save(ticket);
     }
 

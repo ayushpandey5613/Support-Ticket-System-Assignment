@@ -7,6 +7,7 @@ import com.ticketsystem.web.dto.CreateTicketRequest;
 import com.ticketsystem.web.dto.TicketDetailResponse;
 import com.ticketsystem.web.dto.TicketPageResponse;
 import com.ticketsystem.web.dto.TicketResponse;
+import com.ticketsystem.web.dto.TransitionStatusRequest;
 import jakarta.validation.Valid;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
@@ -51,6 +52,13 @@ public class TicketController {
     @PatchMapping("/{id}")
     public TicketResponse patch(@PathVariable UUID id, @RequestBody JsonNode body) {
         Ticket ticket = ticketService.patch(id, body);
+        return TicketResponse.from(ticket);
+    }
+
+    @PostMapping("/{id}/status")
+    public TicketResponse transitionStatus(
+            @PathVariable UUID id, @Valid @RequestBody TransitionStatusRequest request) {
+        Ticket ticket = ticketService.transitionStatus(id, request.getStatus());
         return TicketResponse.from(ticket);
     }
 }

@@ -5,7 +5,6 @@
 - `OPEN`
 - `IN_PROGRESS`
 - `RESOLVED`
-- `CLOSED`
 - `CLOSED` (terminal)
 - `CANCELLED` (terminal)
 

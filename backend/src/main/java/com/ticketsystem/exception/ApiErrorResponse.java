@@ -12,6 +12,8 @@ public class ApiErrorResponse {
     private String message;
     private String path;
     private List<FieldErrorItem> fieldErrors;
+    private String from;
+    private String to;
 
     public record FieldErrorItem(String field, String message) {
     }
@@ -70,5 +72,21 @@ public class ApiErrorResponse {
 
     public void setFieldErrors(List<FieldErrorItem> fieldErrors) {
         this.fieldErrors = fieldErrors;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
     }
 }

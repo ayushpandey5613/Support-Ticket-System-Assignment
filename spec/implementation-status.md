@@ -2,7 +2,7 @@
 
 Tracks **requirements vs spec vs code**. AI/reviewers: incomplete rows are **planned later phases**, not spec drift.
 
-Last updated: Phase 2 complete (2026-09-25).
+Last updated: Phase 3 complete (2026-09-25).
 
 ## Workflow artefacts (assignment)
 
@@ -30,7 +30,7 @@ Last updated: Phase 2 complete (2026-09-25).
 | FR-05 | Comments | 4 | Planned | 6 | IT-03 |
 | FR-06 | Search `q` | 4 | Planned | 6 | IT-04 |
 | FR-07 | Filter `status` | 4 | Planned | 6 | IT-04 |
-| FR-08 | Status transitions | 3 | Planned | 7 | IT-05, IT-06, state-machine suite |
+| FR-08 | Status transitions | 3 | Done | 7 | IT-05, IT-06, state-machine suite |
 | FR-09 | Persist / restart | 2/8 | H2 file dev (2); Postgres (8) | — | IT-08 (8) |
 | FR-10 | Backend validation | 2 | Done | — | IT-07 |
 | FR-11 | UI errors | 5–7 | API shape ready | Planned | Manual / E2E |
@@ -43,12 +43,12 @@ Last updated: Phase 2 complete (2026-09-25).
 | `GET /api/v1/tickets` | Yes | Phase 2 (`q`, `status` → Phase 4) |
 | `GET /api/v1/tickets/{id}` | Yes | Phase 2 |
 | `PATCH /api/v1/tickets/{id}` | Yes | Phase 2 (rejects `status`) |
-| `POST /api/v1/tickets/{id}/status` | Yes | Phase 3 |
+| `POST /api/v1/tickets/{id}/status` | Yes | Phase 3 (done) |
 | `POST /api/v1/tickets/{id}/comments` | Yes | Phase 4 |
 
 ## State machine
 
-Enforcement: **not yet** (Phase 3). Spec: `spec/state-machine.md`.
+Enforcement: **done** (`TicketStatusTransition` + `POST .../status`). Spec: `spec/state-machine.md`.
 
 ## Acceptance criteria checklist
 
