@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.ticketsystem.domain.Priority;
 import com.ticketsystem.domain.Ticket;
 import com.ticketsystem.domain.TicketStatus;
+import org.springframework.util.StringUtils;
 import com.ticketsystem.exception.InvalidPatchException;
 import com.ticketsystem.exception.TicketNotFoundException;
 import com.ticketsystem.repository.TicketRepository;
@@ -53,11 +54,12 @@ public class TicketService {
     }
 
     @Transactional(readOnly = true)
-    public TicketPageResponse list(int page, int size) {
+    public TicketPageResponse list(int page, int size, TicketStatus status, String q) {
         int safeSize = size <= 0 ? DEFAULT_PAGE_SIZE : Math.min(size, MAX_PAGE_SIZE);
         int safePage = Math.max(page, 0);
         Pageable pageable = PageRequest.of(safePage, safeSize, Sort.by(Sort.Direction.DESC, "createdAt"));
-        Page<Ticket> result = ticketRepository.findAll(pageable);
+        String keyword = StringUtils.hasText(q) ? q.trim() : null;
+        Page<Ticket> result = ticketRepository.findFiltered(status, keyword, pageable);
         List<TicketResponse> content = result.getContent().stream().map(TicketResponse::from).toList();
         return new TicketPageResponse(content, result.getNumber(), result.getSize(), result.getTotalElements());
     }

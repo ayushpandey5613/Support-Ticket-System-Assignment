@@ -11,7 +11,8 @@ SE/SSE assignment — **spec-driven** monorepo (Java 21 + Spring Boot + Next.js)
 | [spec/implementation-status.md](spec/implementation-status.md) | **What is built per phase (reviewers start here)** |
 | [spec/api-contract.md](spec/api-contract.md) | REST API v1 |
 | [spec/state-machine.md](spec/state-machine.md) | Ticket status transitions (backend-enforced) |
-| [docs/reviews/phase-2-cross-check.md](docs/reviews/phase-2-cross-check.md) | Latest spec-vs-code review |
+| [docs/reviews/assessment-readiness.md](docs/reviews/assessment-readiness.md) | **Assignment ↔ repo map (AI reviewers)** |
+| [docs/ai-review-log.md](docs/ai-review-log.md) | AI suggestions rejected / corrected |
 
 ## Repo layout
 
@@ -38,4 +39,5 @@ Tests: `cd backend && mvn test`
 - **Phase 1:** specifications and steering (complete)
 - **Phase 2:** backend ticket CRUD + validation + H2 (complete)
 - **Phase 3:** status state machine + integration tests (complete)
-- **Phase 4+:** comments/search, frontend, Postgres
+- **Phase 4:** comments, search & status filter APIs (complete)
+- **Phase 5+:** frontend, Postgres

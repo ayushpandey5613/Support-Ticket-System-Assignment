@@ -12,7 +12,7 @@
 
 | Area | Class (planned) | Cases |
 |------|-----------------|-------|
-| Transitions | `TicketStatusService` or equivalent | All allowed + forbidden from `state-machine.md` |
+| Transitions | `TicketStatusTransition` | All allowed + forbidden from `state-machine.md` |
 | Validation | DTO validators | blank title, enum typos |
 
 ### Integration (`@SpringBootTest` + MockMvc)

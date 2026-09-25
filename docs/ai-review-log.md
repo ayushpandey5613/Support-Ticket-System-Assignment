@@ -15,5 +15,8 @@ Document where AI output was **reviewed and corrected** (not accepted blindly).
 | 2026-09-25 | Phase 2 review | Optional DTO for PATCH without handling `assignee: null` | Used `JsonNode` PATCH in service to honour contract null-clear without extra dependency |
 | 2026-09-25 | Phase 2 review | `pom.xml` typo `<n>` instead of `<name>` | Fixed during cross-check |
 | 2026-09-25 | Phase 3 | Inline transition `if` chain in controller | Dedicated `TicketStatusTransition` `@Component` + service call (`rules/java-springboot.md`) |
+| 2026-09-25 | Phase 4 | Same `CommentResponse` with `ticketId` on GET detail embed | `ticketId` only on 201 create; detail uses `@JsonInclude NON_NULL` + `forDetail()` per `api-contract.md` |
+| 2026-09-25 | Assessment review | Mark all `requirements.md` checks unchecked though backend done | Split **Backend/API progress** vs **End-to-end UI**; map in `assessment-readiness.md` |
+| 2026-09-25 | Assessment review | Default Spring error for bad `status` query enum | `MethodArgumentTypeMismatchException` → unified `VALIDATION_ERROR` envelope |
 
 Add a row after each `commands/review-code.md` session during implementation phases.

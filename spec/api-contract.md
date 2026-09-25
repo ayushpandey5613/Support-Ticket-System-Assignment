@@ -178,6 +178,4 @@ All error responses use the structure in `rules/api-standards.md`. Domain codes 
 |----------|----------------|
 | POST/GET/PATCH `/tickets`, GET `/tickets/{id}` (no comments yet in Phase 2 if split) | Phase 2 |
 | `POST /tickets/{id}/status` | Phase 3 |
-| Comments + list `q` / `status` | Phase 4 |
-
-Phase 2 MAY return empty `comments: []` on GET detail until Phase 4.
+| Comments + list `q` / `status` | Phase 4 (implemented) |

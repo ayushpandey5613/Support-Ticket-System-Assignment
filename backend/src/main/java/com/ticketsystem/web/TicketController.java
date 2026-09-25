@@ -2,7 +2,11 @@ package com.ticketsystem.web;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.ticketsystem.domain.Ticket;
+import com.ticketsystem.domain.TicketStatus;
+import com.ticketsystem.service.CommentService;
 import com.ticketsystem.service.TicketService;
+import com.ticketsystem.web.dto.CreateCommentRequest;
+import com.ticketsystem.web.dto.CommentResponse;
 import com.ticketsystem.web.dto.CreateTicketRequest;
 import com.ticketsystem.web.dto.TicketDetailResponse;
 import com.ticketsystem.web.dto.TicketPageResponse;
@@ -26,9 +30,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TicketController {
 
     private final TicketService ticketService;
+    private final CommentService commentService;
 
-    public TicketController(TicketService ticketService) {
+    public TicketController(TicketService ticketService, CommentService commentService) {
         this.ticketService = ticketService;
+        this.commentService = commentService;
     }
 
     @PostMapping
@@ -40,13 +46,23 @@ public class TicketController {
     @GetMapping
     public TicketPageResponse list(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size) {
-        return ticketService.list(page, size);
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(required = false) TicketStatus status,
+            @RequestParam(required = false) String q) {
+        return ticketService.list(page, size, status, q);
     }
 
     @GetMapping("/{id}")
     public TicketDetailResponse getById(@PathVariable UUID id) {
-        return TicketDetailResponse.from(ticketService.getById(id));
+        Ticket ticket = ticketService.getById(id);
+        return TicketDetailResponse.from(ticket, commentService.listForTicket(id));
+    }
+
+    @PostMapping("/{id}/comments")
+    public ResponseEntity<CommentResponse> addComment(
+            @PathVariable UUID id, @Valid @RequestBody CreateCommentRequest request) {
+        CommentResponse comment = commentService.addComment(id, request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(comment);
     }
 
     @PatchMapping("/{id}")

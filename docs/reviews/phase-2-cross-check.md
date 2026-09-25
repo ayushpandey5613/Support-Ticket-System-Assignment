@@ -1,5 +1,7 @@
 # Phase 2 cross-check (spec-driven review)
 
+> **Superseded for holistic review:** see [assessment-readiness.md](assessment-readiness.md) (updated after Phase 4).
+
 Date: 2026-09-25  
 Scope: `backend/` Phase 2 vs `spec/`, `rules/`
 

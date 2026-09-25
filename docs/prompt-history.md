@@ -78,7 +78,28 @@ For each meaningful AI session:
 ### Phase 3 complete — 2026-09-25
 
 - Tests: `mvn test` (includes state-machine suite)
-- Next: **Phase 4** — comments, `q`, `status` on list API
+- Next: **Phase 5** — Next.js list + create
+
+---
+
+## 2026-09-25 — Holistic assessment cross-check (pre-AI review)
+
+**User prompt:** Full cross-check for AI review; must match assignment spec-driven requirements.
+
+**Outcome:** `docs/reviews/assessment-readiness.md`, backend acceptance ticks in `requirements.md`, invalid query param handling, comment validation test, `application-postgres.yml` stub, `frontend/.gitkeep`.
+
+---
+
+## 2026-09-25 — Phase 4: Comments, search, filter
+
+**Prompt:** Phase 4 start.
+
+**Outcome:** `Comment` entity, `POST /tickets/{id}/comments`, GET detail with comments, list `q` + `status` (AND), `TicketCommentAndSearchIntegrationTest` (IT-03, IT-04).
+
+### Phase 4 complete — 2026-09-25
+
+- Tests: `mvn test`
+- Next: **Phase 5** — frontend list + create
 
 ---
 

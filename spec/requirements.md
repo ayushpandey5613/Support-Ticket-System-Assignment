@@ -41,6 +41,26 @@ Web application for creating and managing support tickets with comments, search,
 
 ## Core acceptance criteria (checklist)
 
+Full product (UI + backend). **Backend/API progress** is tracked in `spec/implementation-status.md` and `docs/reviews/assessment-readiness.md`.
+
+### Backend / API progress (Phases 2–4)
+
+- [x] Ticket created via API (`POST /api/v1/tickets`)
+- [x] Tickets listed (paginated)
+- [x] Ticket details viewed (with comments)
+- [x] Ticket fields updated; assignee changed (`PATCH`)
+- [x] Comments added (`POST .../comments`)
+- [x] Search works (`q` on list)
+- [x] Status filter works (`status` on list)
+- [x] Valid status transitions work
+- [x] Invalid transitions rejected by backend (`409`)
+- [x] Backend validation works
+- [x] State-machine integration tests pass
+- [ ] Data survives restart (H2 file dev OK; formal IT-08 + Postgres in Phase 8)
+- [x] No secrets committed
+
+### End-to-end (requires frontend Phases 5–7)
+
 - [ ] Ticket created from UI
 - [ ] Tickets listed
 - [ ] Ticket details viewed

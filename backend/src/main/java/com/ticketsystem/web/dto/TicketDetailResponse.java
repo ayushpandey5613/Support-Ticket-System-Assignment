@@ -18,7 +18,7 @@ public record TicketDetailResponse(
         Instant updatedAt,
         List<CommentResponse> comments) {
 
-    public static TicketDetailResponse from(Ticket ticket) {
+    public static TicketDetailResponse from(Ticket ticket, List<CommentResponse> comments) {
         return new TicketDetailResponse(
                 ticket.getId(),
                 ticket.getTitle(),
@@ -28,6 +28,6 @@ public record TicketDetailResponse(
                 ticket.getAssignee(),
                 ticket.getCreatedAt(),
                 ticket.getUpdatedAt(),
-                List.of());
+                comments);
     }
 }
