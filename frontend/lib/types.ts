@@ -56,3 +56,34 @@ export interface CreateTicketInput {
   priority?: Priority;
   assignee?: string;
 }
+
+export interface Comment {
+  id: string;
+  author: string;
+  body: string;
+  createdAt: string;
+}
+
+export interface TicketDetail extends Ticket {
+  comments: Comment[];
+}
+
+export interface PatchTicketInput {
+  title?: string;
+  description?: string;
+  priority?: Priority;
+  assignee?: string | null;
+}
+
+export interface CreateCommentInput {
+  author: string;
+  body: string;
+}
+
+export const TICKET_STATUSES: TicketStatus[] = [
+  "OPEN",
+  "IN_PROGRESS",
+  "RESOLVED",
+  "CLOSED",
+  "CANCELLED",
+];

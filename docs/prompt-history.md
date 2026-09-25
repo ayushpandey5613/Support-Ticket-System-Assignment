@@ -78,7 +78,19 @@ For each meaningful AI session:
 ### Phase 3 complete — 2026-09-25
 
 - Tests: `mvn test` (includes state-machine suite)
-- Next: **Phase 5** — Next.js list + create
+- Next: **Phase 6** — detail, edit, comments, search/filter
+
+---
+
+## 2026-09-25 — Phase 6: Frontend detail + search/filter
+
+**Prompt:** Phase 6 start.
+
+**Outcome:** `/tickets/[id]` edit + comments, list search/status filter, create redirects to detail.
+
+### Phase 6 complete — 2026-09-25
+
+- Next: **Phase 7** — status transition buttons + 409 error display
 
 ---
 

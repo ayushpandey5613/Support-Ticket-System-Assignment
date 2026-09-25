@@ -1,9 +1,14 @@
 import {
   ApiError,
   ApiErrorBody,
+  CreateCommentInput,
   CreateTicketInput,
+  Comment,
+  PatchTicketInput,
   Ticket,
+  TicketDetail,
   TicketPage,
+  TicketStatus,
 } from "./types";
 
 export function getApiBaseUrl(): string {
@@ -52,6 +57,11 @@ export async function apiFetch<T>(
         "API request timed out. Is the backend running on port 8080? (mvn spring-boot:run in backend/)"
       );
     }
+    if (e instanceof TypeError) {
+      throw new Error(
+        "Cannot reach the API. Start the backend (mvn spring-boot:run in backend/) and restart it after CORS changes. Check NEXT_PUBLIC_API_URL points to http://localhost:8080/api/v1."
+      );
+    }
     throw e;
   } finally {
     clearTimeout(timeout);
@@ -65,16 +75,56 @@ export async function apiFetch<T>(
   return (await response.json()) as T;
 }
 
-export async function listTickets(page = 0, size = 20): Promise<TicketPage> {
-  const params = new URLSearchParams({
+export interface ListTicketsParams {
+  page?: number;
+  size?: number;
+  q?: string;
+  status?: TicketStatus;
+}
+
+export async function listTickets(
+  params: ListTicketsParams = {}
+): Promise<TicketPage> {
+  const { page = 0, size = 20, q, status } = params;
+  const search = new URLSearchParams({
     page: String(page),
     size: String(size),
   });
-  return apiFetch<TicketPage>(`/tickets?${params}`);
+  if (q?.trim()) {
+    search.set("q", q.trim());
+  }
+  if (status) {
+    search.set("status", status);
+  }
+  return apiFetch<TicketPage>(`/tickets?${search}`);
+}
+
+export async function getTicket(id: string): Promise<TicketDetail> {
+  return apiFetch<TicketDetail>(`/tickets/${id}`);
 }
 
 export async function createTicket(input: CreateTicketInput): Promise<Ticket> {
   return apiFetch<Ticket>("/tickets", {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
+}
+
+export async function patchTicket(
+  id: string,
+  input: PatchTicketInput
+): Promise<Ticket> {
+  return apiFetch<Ticket>(`/tickets/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(input),
+  });
+}
+
+export async function addComment(
+  ticketId: string,
+  input: CreateCommentInput
+): Promise<Comment> {
+  return apiFetch<Comment>(`/tickets/${ticketId}/comments`, {
     method: "POST",
     body: JSON.stringify(input),
   });

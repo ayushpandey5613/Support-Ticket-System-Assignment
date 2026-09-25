@@ -9,4 +9,5 @@ server:
 
 app:
   cors:
-    allowed-origin: ${FRONTEND_ORIGIN:http://localhost:3000}
+    # Comma-separated; include both if you use localhost or 127.0.0.1 in the browser
+    allowed-origins: ${FRONTEND_ORIGINS:http://localhost:3000,http://127.0.0.1:3000}

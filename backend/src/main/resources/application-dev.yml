@@ -1,3 +1,8 @@
+app:
+  cors:
+    # Next.js may use 3001/3002 when 3000 is busy
+    allowed-origin-patterns: http://localhost:*,http://127.0.0.1:*
+
 spring:
   datasource:
     # File DB (FR-09). Run only ONE backend against this file, or stop other JVMs first.

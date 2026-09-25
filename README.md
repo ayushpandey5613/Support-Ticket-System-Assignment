@@ -74,11 +74,12 @@ If lock persists, stop apps and remove stale lock (data file stays):
 rm -f backend/data/ticketdb.lock.db
 ```
 
-### UI stuck on "Creating…"
+### UI stuck on "Creating…" or "Failed to fetch" / CORS
 
 1. Backend must be **started** (see above).
 2. Test: `curl -X POST http://localhost:8080/api/v1/tickets -H 'Content-Type: application/json' -d '{"title":"T","description":"D"}'` — under ~1s.
 3. Frontend: `NEXT_PUBLIC_API_URL=http://localhost:8080/api/v1` in `frontend/.env.local`.
+4. **CORS:** Dev profile allows any `http://localhost:*` / `127.0.0.1:*` (so port 3002 is fine). **Restart** the backend after CORS changes. Prefer a single `npm run dev` on port **3000** (stop extra Next processes if ports 3001/3002 were picked).
 
 ## Status
 
@@ -87,4 +88,5 @@ rm -f backend/data/ticketdb.lock.db
 - **Phase 3:** status state machine + integration tests (complete)
 - **Phase 4:** comments, search & status filter APIs (complete)
 - **Phase 5:** Next.js list + create (complete)
-- **Phase 6+:** detail, search/filter UI, Postgres
+- **Phase 6:** detail, edit, comments, search/filter UI (complete)
+- **Phase 7+:** status actions UI, Postgres

@@ -63,11 +63,11 @@ Full product (UI + backend). **Backend/API progress** is tracked in `spec/implem
 
 - [x] Ticket created from UI (Phase 5 — `/tickets/new`)
 - [x] Tickets listed (Phase 5 — `/`)
-- [ ] Ticket details viewed
-- [ ] Ticket fields updated; assignee changed
-- [ ] Comments added
-- [ ] Search works
-- [ ] Status filter works
+- [x] Ticket details viewed (`/tickets/[id]`)
+- [x] Ticket fields updated; assignee changed
+- [x] Comments added
+- [x] Search works (list UI)
+- [x] Status filter works (list UI)
 - [ ] Valid status transitions work
 - [ ] Invalid transitions rejected by backend
 - [ ] Data survives application restart

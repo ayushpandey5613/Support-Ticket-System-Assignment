@@ -2,7 +2,7 @@
 
 Tracks **requirements vs spec vs code**. AI/reviewers: incomplete rows are **planned later phases**, not spec drift.
 
-Last updated: Phase 5 complete (2026-09-25).
+Last updated: Phase 6 complete (2026-09-25).
 
 ## Workflow artefacts (assignment)
 
@@ -25,11 +25,11 @@ Last updated: Phase 5 complete (2026-09-25).
 |----|-------------|-------|---------|----------|-------|
 | FR-01 | Create ticket | 2 | Done | 5 | Done (UI create) / IT-01 |
 | FR-02 | List (paginated) | 2 | Done (`page`, `size`) | 5 | Done (UI list) / IT-01 |
-| FR-03 | View details + comments | 4 | Done | 6 | IT-01, IT-03 |
-| FR-04 | Update fields | 2 | Done (PATCH) | 6 | IT-02 |
-| FR-05 | Comments | 4 | Done | 6 | IT-03 |
-| FR-06 | Search `q` | 4 | Done | 6 | IT-04 |
-| FR-07 | Filter `status` | 4 | Done | 6 | IT-04 |
+| FR-03 | View details + comments | 4 | Done | 6 | Done (UI) / IT-03 |
+| FR-04 | Update fields | 2 | Done (PATCH) | 6 | Done (UI) / IT-02 |
+| FR-05 | Comments | 4 | Done | 6 | Done (UI) / IT-03 |
+| FR-06 | Search `q` | 4 | Done | 6 | Done (UI) / IT-04 |
+| FR-07 | Filter `status` | 4 | Done | 6 | Done (UI) / IT-04 |
 | FR-08 | Status transitions | 3 | Done | 7 | IT-05, IT-06, state-machine suite |
 | FR-09 | Persist / restart | 2/8 | H2 file dev (2); Postgres (8) | — | IT-08 (8) |
 | FR-10 | Backend validation | 2 | Done | — | IT-07 |

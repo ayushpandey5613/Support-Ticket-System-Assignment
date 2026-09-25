@@ -65,7 +65,7 @@ Default ports: API `8080`, frontend `3000`.
 | 3 | State machine + integration tests | Complete |
 | 4 | Comments, search, filter APIs | Complete |
 | 5 | Frontend list + create | Complete |
-| 6 | Frontend detail, comments, search, filter | Planned |
+| 6 | Frontend detail, comments, search, filter | Complete |
 | 7 | Status UI + error polish | Planned |
 | 8 | PostgreSQL profile + persistence verification | Planned |
 

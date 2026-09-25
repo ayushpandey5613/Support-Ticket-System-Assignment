@@ -33,13 +33,13 @@ export default function NewTicketPage() {
     setError(null);
     setFieldErrors({});
     try {
-      await createTicket({
+      const created = await createTicket({
         title,
         description,
         priority,
         assignee: assignee.trim() ? assignee.trim() : undefined,
       });
-      router.push("/");
+      router.push(`/tickets/${created.id}`);
       router.refresh();
     } catch (err) {
       if (err instanceof ApiError) {
