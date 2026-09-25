@@ -8,6 +8,8 @@ import org.springframework.util.StringUtils;
 import com.ticketsystem.exception.InvalidPatchException;
 import com.ticketsystem.exception.TicketNotFoundException;
 import com.ticketsystem.repository.TicketRepository;
+import com.ticketsystem.repository.TicketSpecifications;
+import org.springframework.data.jpa.domain.Specification;
 import com.ticketsystem.web.dto.CreateTicketRequest;
 import com.ticketsystem.web.dto.TicketPageResponse;
 import com.ticketsystem.web.dto.TicketResponse;
@@ -59,7 +61,8 @@ public class TicketService {
         int safePage = Math.max(page, 0);
         Pageable pageable = PageRequest.of(safePage, safeSize, Sort.by(Sort.Direction.DESC, "createdAt"));
         String keyword = StringUtils.hasText(q) ? q.trim() : null;
-        Page<Ticket> result = ticketRepository.findFiltered(status, keyword, pageable);
+        Specification<Ticket> spec = TicketSpecifications.filtered(status, keyword);
+        Page<Ticket> result = ticketRepository.findAll(spec, pageable);
         List<TicketResponse> content = result.getContent().stream().map(TicketResponse::from).toList();
         return new TicketPageResponse(content, result.getNumber(), result.getSize(), result.getTotalElements());
     }

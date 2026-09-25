@@ -2,7 +2,7 @@
 
 Tracks **requirements vs spec vs code**. AI/reviewers: incomplete rows are **planned later phases**, not spec drift.
 
-Last updated: Phase 7 complete (2026-09-25).
+Last updated: Phase 8 complete (2026-09-25).
 
 ## Workflow artefacts (assignment)
 
@@ -31,7 +31,7 @@ Last updated: Phase 7 complete (2026-09-25).
 | FR-06 | Search `q` | 4 | Done | 6 | Done (UI) / IT-04 |
 | FR-07 | Filter `status` | 4 | Done | 6 | Done (UI) / IT-04 |
 | FR-08 | Status transitions | 3 | Done | 7 | Done (UI) / IT-05, IT-06 |
-| FR-09 | Persist / restart | 2/8 | H2 file dev (2); Postgres (8) | — | IT-08 (8) |
+| FR-09 | Persist / restart | 2/8 | H2 file dev (2); Postgres (8) | — | IT-08 (Postgres + Docker) |
 | FR-10 | Backend validation | 2 | Done | — | IT-07 |
 | FR-11 | UI errors | 5–7 | API shape ready | Done (detail status 409 + codes) | Manual / E2E |
 

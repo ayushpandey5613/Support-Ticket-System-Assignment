@@ -33,7 +33,7 @@ All present under `spec/`: `requirements.md`, `architecture.md`, `data-model.md`
 
 ## AI not blindly accepted
 
-`docs/ai-review-log.md` — multiple real corrections across Phase 1–4.
+`docs/ai-review-log.md` — multiple real corrections across Phase 1–8.
 
 ## Token optimisation
 
@@ -45,40 +45,40 @@ All present under `spec/`: `requirements.md`, `architecture.md`, `data-model.md`
 |------|--------|
 | Java 21 + Spring Boot REST | `backend/` — implemented |
 | H2 dev / test | `application-dev.yml`, `application-test.yml` |
-| PostgreSQL prod-like | **Phase 8** — `application-postgres.yml` stub only |
-| React/Next.js | **Phase 5** — list + create in `frontend/`; detail/search UI Phase 6 |
-| Cursor / Copilot steering | `rules/`, `.cursor/rules/spec-driven.mdc` |
+| PostgreSQL prod-like | `application-postgres.yml`, `docker-compose.yml`, IT-08 |
+| Next.js frontend | `frontend/` — Phases 5–7 complete per `spec/ui-flow.md` |
+| Cursor steering | `rules/`, `.cursor/rules/spec-driven.mdc` |
 
 ## Features vs acceptance criteria
 
-| Criterion | Backend (API/tests) | UI (Phase 5–7) |
-|-----------|---------------------|----------------|
+| Criterion | Backend (API/tests) | UI |
+|-----------|---------------------|-----|
 | Create ticket | Done — `POST /tickets` | Done — `/tickets/new` |
 | List tickets | Done — paginated | Done — `/` |
-| View details | Done — includes comments | Pending |
-| Update fields / assignee | Done — `PATCH` | Pending |
-| Comments | Done — `POST .../comments` | Pending |
-| Search `q` | Done | Pending |
-| Filter `status` | Done | Pending |
-| Valid / invalid transitions | Done — `TicketStatusTransition*` tests | Pending |
-| Data survives restart | H2 **file** dev (manual/IT-08 Phase 8) | — |
-| Backend validation | Done — IT-07 + comment validation | — |
-| UI meaningful errors | API envelope ready | Pending |
+| View details | Done — includes comments | Done — `/tickets/[id]` |
+| Update fields / assignee | Done — `PATCH` | Done — detail edit form |
+| Comments | Done — `POST .../comments` | Done — detail comments |
+| Search `q` | Done | Done — list search |
+| Filter `status` | Done | Done — list filter |
+| Valid / invalid transitions | Done — `TicketStatusTransition*` tests | Done — status buttons + 409 |
+| Data survives restart | H2 file dev + IT-08 Postgres (Docker) | — |
+| Backend validation | Done — IT-07 + comment validation | Done — `ErrorAlert` / inline errors |
+| UI meaningful errors | API envelope | Done — message + error code |
 | State-machine integration tests | Done — `TicketStatusTransitionIntegrationTest` | — |
-| No secrets in repo | `.gitignore`, empty H2 passwords in dev/test only | OK |
+| No secrets in repo | `.gitignore`, dev/test only | OK |
 
 ## API contract compliance (backend)
 
 All v1 endpoints in `spec/api-contract.md` are implemented in `TicketController` (Phases 2–4). Run: `cd backend && mvn test`.
 
-## Intentional incomplete items (not bugs)
+## Reviewer quick start
 
-1. **Frontend** — phased; specs in `spec/ui-flow.md`.  
-2. **PostgreSQL profile** — Phase 8.  
-3. **`requirements.md` checklist `[ ]`** — end-to-end product; see **Backend progress** section added in that file.  
-4. **Copilot** — same `rules/`/`spec/` as Cursor; IDE-specific config not required by rubric.
+1. Read `spec/implementation-status.md` and `spec/requirements.md` (checklists).  
+2. `cd backend && mvn test`  
+3. `./scripts/stop-dev.sh` then `cd backend && mvn spring-boot:run` and `cd frontend && npm run dev` → `http://localhost:3000`  
+4. Optional Postgres: `docker compose up -d` and `./scripts/start-postgres-backend.sh`
 
-## Latest cross-checks
+## Cross-check documents
 
 - `docs/reviews/phase-2-cross-check.md` (Phase 2 slice)  
-- This file (holistic, updated after Phase 4)
+- This file (holistic, final pass **2026-09-25** after Phase 8)

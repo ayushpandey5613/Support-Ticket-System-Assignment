@@ -67,6 +67,6 @@ Default ports: API `8080`, frontend `3000`.
 | 5 | Frontend list + create | Complete |
 | 6 | Frontend detail, comments, search, filter | Complete |
 | 7 | Status UI + error polish | Complete |
-| 8 | PostgreSQL profile + persistence verification | Planned |
+| 8 | PostgreSQL profile + persistence verification | Complete |
 
 Detailed FR/API mapping: `spec/implementation-status.md`.

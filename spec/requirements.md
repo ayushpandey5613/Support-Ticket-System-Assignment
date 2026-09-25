@@ -56,7 +56,7 @@ Full product (UI + backend). **Backend/API progress** is tracked in `spec/implem
 - [x] Invalid transitions rejected by backend (`409`)
 - [x] Backend validation works
 - [x] State-machine integration tests pass
-- [ ] Data survives restart (H2 file dev OK; formal IT-08 + Postgres in Phase 8)
+- [x] Data survives restart (H2 file dev; IT-08 Postgres + Docker)
 - [x] No secrets committed
 
 ### End-to-end (requires frontend Phases 5–7)
@@ -70,11 +70,11 @@ Full product (UI + backend). **Backend/API progress** is tracked in `spec/implem
 - [x] Status filter works (list UI)
 - [x] Valid status transitions work (detail status actions)
 - [x] Invalid transitions rejected by backend (409 + `INVALID_STATUS_TRANSITION` in UI)
-- [ ] Data survives application restart
-- [ ] Backend validation works
+- [x] Data survives application restart (IT-08 / H2 file manual)
+- [x] Backend validation works (UI shows API field errors on create/edit)
 - [x] UI shows meaningful errors (API message + code on detail)
-- [ ] State-machine integration tests pass
-- [ ] No secrets committed
+- [x] State-machine integration tests pass (`mvn test`)
+- [x] No secrets committed
 
 ## Traceability
 

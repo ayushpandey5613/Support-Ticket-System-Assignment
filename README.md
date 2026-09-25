@@ -2,6 +2,8 @@
 
 SE/SSE assignment — **spec-driven** monorepo (Java 21 + Spring Boot + Next.js).
 
+**Assignment reviewers:** start at [spec/implementation-status.md](spec/implementation-status.md) and [docs/reviews/assessment-readiness.md](docs/reviews/assessment-readiness.md).
+
 ## Start here
 
 | Document | Purpose |
@@ -102,6 +104,33 @@ rm -f backend/data/ticketdb.lock.db
 3. Frontend: `NEXT_PUBLIC_API_URL=http://localhost:8080/api/v1` in `frontend/.env.local`.
 4. **CORS:** Dev profile allows any `http://localhost:*` / `127.0.0.1:*` (so port 3002 is fine). **Restart** the backend after CORS changes. Prefer a single `npm run dev` on port **3000** (stop extra Next processes if ports 3001/3002 were picked).
 
+## PostgreSQL (Phase 8)
+
+Dev default remains **H2 file** (`dev` profile). For prod-like persistence:
+
+```bash
+docker compose up -d
+export DB_URL=jdbc:postgresql://localhost:5432/tickets
+export DB_USER=ticket
+export DB_PASSWORD=ticket
+cd backend
+SPRING_PROFILES_ACTIVE=postgres mvn spring-boot:run
+```
+
+See `backend/env.postgres.example`. Shortcut: `./scripts/start-postgres-backend.sh` (after `docker compose up -d`).
+
+**`Connection refused` on startup:** Postgres container not up, or `DB_URL` / `DB_USER` / `DB_PASSWORD` not set before `SPRING_PROFILES_ACTIVE=postgres`. Fix:
+
+```bash
+docker compose up -d
+export DB_URL=jdbc:postgresql://localhost:5432/tickets DB_USER=ticket DB_PASSWORD=ticket
+./scripts/start-postgres-backend.sh
+```
+
+Stop Postgres: `docker compose down`.
+
+**IT-08** (`TicketRestartPersistenceIntegrationTest`): needs **Docker** — creates a ticket, restarts the Spring app, asserts data still in Postgres. Without Docker the test is skipped (`mvn test` still passes).
+
 ## Status
 
 - **Phase 1:** specifications and steering (complete)
@@ -111,4 +140,4 @@ rm -f backend/data/ticketdb.lock.db
 - **Phase 5:** Next.js list + create (complete)
 - **Phase 6:** detail, edit, comments, search/filter UI (complete)
 - **Phase 7:** status actions UI + 409 errors (complete)
-- **Phase 8:** Postgres
+- **Phase 8:** PostgreSQL profile + IT-08 restart persistence (complete)

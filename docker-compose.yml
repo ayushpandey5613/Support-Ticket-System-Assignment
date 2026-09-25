@@ -1,0 +1,18 @@
+# Local PostgreSQL for Spring profile `postgres` (Phase 8).
+# Usage: docker compose up -d
+# Then: see README "PostgreSQL (Phase 8)"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: tickets
+      POSTGRES_USER: ticket
+      POSTGRES_PASSWORD: ticket
+    ports:
+      - "5432:5432"
+    volumes:
+      - ticket_pg_data:/var/lib/postgresql/data
+
+volumes:
+  ticket_pg_data:
