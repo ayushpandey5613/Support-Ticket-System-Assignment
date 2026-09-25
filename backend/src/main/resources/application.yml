@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ticket-system
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+
+app:
+  cors:
+    allowed-origin: ${FRONTEND_ORIGIN:http://localhost:3000}

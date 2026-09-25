@@ -19,11 +19,20 @@ SE/SSE assignment — **spec-driven** monorepo (Java 21 + Spring Boot + Next.js)
 - `rules/`, `commands/`, `skills/` — reusable AI / team instructions
 - `docs/prompt-history.md` — prompt index; `.specstory/history/` — raw chat exports
 
-## Local run (after Phase 2+)
+## Local run — backend (Phase 2)
 
-Documented in backend/frontend README sections as they are added.
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+API base: `http://localhost:8080/api/v1`  
+H2 file DB: `backend/data/` (dev profile, survives restarts)
+
+Tests: `cd backend && mvn test`
 
 ## Status
 
 - **Phase 1:** specifications and steering (complete)
-- **Phase 2+:** implementation in progress
+- **Phase 2:** backend ticket CRUD + validation + H2 (complete)
+- **Phase 3+:** state machine, comments/search, frontend

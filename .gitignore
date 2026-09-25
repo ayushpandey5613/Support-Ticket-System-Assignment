@@ -24,6 +24,9 @@ frontend/.env.local
 .vscode/settings.json
 .DS_Store
 
+# Accidental nested clones
+Support-Ticket-System-*/
+
 # Logs & temp
 *.log
 /tmp/

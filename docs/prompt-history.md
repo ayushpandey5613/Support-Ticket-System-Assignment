@@ -41,7 +41,22 @@ For each meaningful AI session:
 
 - Spec files touched: all under `spec/`
 - Pre-push: ran internal spec review; fixed UUID/ID drift, PATCH vs status endpoint, error envelope, data-model contradictions, added `development-workflow.md`, `README.md`, `docs/ai-tooling.md`
-- Next phase: **Phase 2** — Spring Boot module in `backend/`, H2, ticket CRUD + validation per `api-contract.md` (status transitions in Phase 3)
+- Next phase: **Phase 3** — status state machine + integration tests
+
+---
+
+## 2026-09-25 — Phase 2: Backend CRUD
+
+**Prompt:** Phase 2 start — Spring Boot CRUD per spec (no status endpoint yet).
+
+**Outcome:** `backend/` Spring Boot 3.4, Java 21, JPA Ticket entity, POST/GET list/GET detail/PATCH, validation + error envelope, H2 file dev profile, MockMvc tests (IT-01, IT-02, IT-07).
+
+**Branch:** `cursor/phase-2-backend-crud`
+
+### Phase 2 complete — 2026-09-25
+
+- Tests: `mvn test` in `backend/`
+- Next: **Phase 3** — `POST /tickets/{id}/status` + `TicketStatusTransitionIntegrationTest`
 
 ---
 
