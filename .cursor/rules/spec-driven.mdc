@@ -1,0 +1,13 @@
+---
+description: Spec-driven workflow for Support Ticket System
+alwaysApply: true
+---
+
+# Spec-driven development
+
+1. Read `spec/development-workflow.md` and relevant `spec/*.md` before implementing.
+2. Follow `rules/java-springboot.md`, `rules/api-standards.md`, `rules/testing.md` for backend work.
+3. Do not change API or state machine without updating `spec/api-contract.md` and `spec/state-machine.md`.
+4. Enforce ticket status transitions only in the backend service layer.
+5. After each phase, update `docs/prompt-history.md` and log AI corrections in `docs/ai-review-log.md`.
+6. Use reusable prompts in `commands/` for review and test generation.

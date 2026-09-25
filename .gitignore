@@ -1,0 +1,33 @@
+# Secrets & local config
+.env
+.env.*
+!.env.example
+**/application-local.yml
+**/application-local.properties
+
+# Java
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+
+# Node / Next
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+
+# IDE
+.idea/
+*.iml
+.vscode/settings.json
+.DS_Store
+
+# Logs & temp
+*.log
+/tmp/
+
+# H2 file DB (local persistence experiments)
+*.db
+backend/data/
